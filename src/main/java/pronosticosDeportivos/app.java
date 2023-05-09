@@ -95,12 +95,23 @@ public class app {
 			listaTemporal.add(mayor);
 		}
 		usuarios.addAll(listaTemporal);
+		listaTemporal.removeAll(listaTemporal);
 	}
 	
 	public static void imprimirListaDeUsuarios(ArrayList<Usuario> listaDeUsuarios) {
 		for(int t=0;t<listaDeUsuarios.size();t++) {
 			imprimirPuntajeUsuario(listaDeUsuarios.get(t));
 		}
+	}
+	
+	public static Usuario obtenerGanador(ArrayList<Usuario> usuarios) {
+		Usuario ganador = usuarios.get(0);
+		for(int x=1;x<usuarios.size(); x++) {
+			if(usuarios.get(x).getPuntajeAcumulado() > ganador.getPuntajeAcumulado()) {
+				ganador = usuarios.get(x);
+			}
+		}
+		return ganador;
 	}
 	
 	public static void main(String[] args) {
@@ -119,6 +130,7 @@ public class app {
 		Usuario guadalupe = new Usuario("Guadalupe","Quiroz", pronosticos, 4);
 		Usuario ayelen = new Usuario("Ayelen","Quiroz", pronosticos, 5);
 		Usuario fabiana = new Usuario("Fabiana","Espina", pronosticos, 1);
+		System.out.println("Se registraron "+Usuario.getCantidadUsuarios()+" usuarios");
 		asignarPuntajeUsuario(partidos, gabriel);
 		asignarPuntajeUsuario(partidos, marcelo);
 		asignarPuntajeUsuario(partidos, guadalupe);
@@ -141,6 +153,11 @@ public class app {
 		lineaDivisoria();
 		System.out.println("PUNTAJES(ordenados)");
 		lineaDivisoria();
-		imprimirListaDeUsuarios(listaDeUsuarios);	
+		imprimirListaDeUsuarios(listaDeUsuarios);
+		Usuario ganador = obtenerGanador(listaDeUsuarios);
+		System.out.println("El ganador/a de la competencia es: " + ganador.getNombre() + 
+				" " + ganador.getApellido() +" con " + ganador.getPuntajeAcumulado() + 
+				" puntos.");
+		
 	}
 }

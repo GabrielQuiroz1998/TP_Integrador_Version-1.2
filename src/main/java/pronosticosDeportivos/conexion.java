@@ -16,7 +16,7 @@ public class conexion {
 			//ya que ser carga automaticamente
 			String url = "jdbc:mysql://127.0.0.1:3306/?user=root";
 			String nombre = "root";
-			String password= "sanlorenzo";
+			String password= "copalibertadores14";
 			this.con = DriverManager.getConnection(url,nombre,password); //2-Crear Conexion
 		} catch (Exception e) {
 			// TODO: handle exception

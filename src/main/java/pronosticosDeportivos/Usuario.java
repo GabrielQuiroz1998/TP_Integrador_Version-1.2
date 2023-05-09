@@ -9,6 +9,7 @@ public class Usuario {
 	private int puntosPorAcertar;
 	private int puntajeAcumulado;
 	private int partidosAcertados;
+	private static int cantidadUsuarios;
 	
 	public Usuario(String nombre, String apellido, ArrayList<Pronostico> pronostico, int puntosPorAcertar) {
 		super();
@@ -17,7 +18,8 @@ public class Usuario {
 		this.pronostico = pronostico;
 		this.puntajeAcumulado = 0;
 		this.partidosAcertados = 0;
-		this.puntosPorAcertar  = puntosPorAcertar;			
+		this.puntosPorAcertar  = puntosPorAcertar;
+		cantidadUsuarios ++;
 	}
 
 	public void setPuntajeAcumulado() {
@@ -50,6 +52,10 @@ public class Usuario {
 	
 	public int getPartidosAcertados() {
 		return partidosAcertados;
+	}
+
+	public static int getCantidadUsuarios() {
+		return cantidadUsuarios;
 	}	
 	
 	
