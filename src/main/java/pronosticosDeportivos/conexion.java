@@ -10,16 +10,19 @@ public class conexion {
 	private Connection con;
 	
 	public conexion(){
+		//con try le "digo" a java intente hacer esto, y de no poder ejecutar las instrucciones
+		//lanzo las excepciones en el catch y sigo con la pila de ejecucion
 		try {
-			//Class.forName("com.mysql.jdbc.Driver");//1-Registro el Driver
-			//el regristro del driver esta comentado por que la consola me dice que no es necesario
-			//ya que ser carga automaticamente
+			//Class.forName("com.mysql.jdbc.Driver");//1-Registro el Driver (esta comentado por que no es necesario)
 			String url = "jdbc:mysql://127.0.0.1:3306/?user=root";
 			String nombre = "root";
-			String password= "copalibertadores14";
+			String password= "sanlorenzo";
 			this.con = DriverManager.getConnection(url,nombre,password); //2-Crear Conexion
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (SQLException e) {//aca capturo el tipo de error
+			//aca uso los metodos del error para tratar de detallar el problema
+			System.out.println(e.getSQLState());
+			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	
